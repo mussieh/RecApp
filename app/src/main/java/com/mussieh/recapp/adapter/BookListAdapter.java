@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mussieh.recapp.R;
@@ -13,7 +15,6 @@ import com.mussieh.recapp.data.BookItem;
 import com.mussieh.recapp.data.BookListOpenHelper;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.WordViewHolder> {
 
-    private final List<BookItem> mBookList;
+    private List<BookItem> mBookList;
     private LayoutInflater mInflater;
     private BookListOpenHelper mDB;
 
@@ -43,7 +44,10 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.WordVi
     @Override
     public void onBindViewHolder(BookListAdapter.WordViewHolder holder, int position) {
         BookItem current = mBookList.get(position);
-        holder.wordItemView.setText(current.getAuthor());
+        holder.titleEditTextView.setText(current.getTitle());
+        holder.rankTextView.setText(String.valueOf(current.getRank()));
+        holder.authorTextView.setText(current.getAuthor());
+        holder.bookTypeTextView.setText(current.getBookType());
     }
 
     /**
@@ -53,9 +57,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.WordVi
      */
     public void setData(List<BookItem> data) {
         Log.d("Set Data", "WTh");
-        for (BookItem item : data) {
-            mBookList.add(item);
-        }
+        mBookList = data;
         this.notifyDataSetChanged();
     }
 
@@ -66,12 +68,19 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.WordVi
 
     class WordViewHolder extends RecyclerView.ViewHolder {
 
-        public final TextView wordItemView;
+        public final EditText titleEditTextView;
+//        public final ImageView bookImageView;
+        public final TextView rankTextView;
+        public final TextView authorTextView;
+        public final TextView bookTypeTextView;
         final BookListAdapter mAdapter;
 
         public WordViewHolder(View itemView, BookListAdapter adapter) {
             super(itemView);
-            wordItemView = (TextView) itemView.findViewById(R.id.word);
+            titleEditTextView = (EditText) itemView.findViewById(R.id.book_type_view);
+            rankTextView = (TextView) itemView.findViewById(R.id.rank_text_view);
+            authorTextView = (TextView) itemView.findViewById(R.id.author_name_view);
+            bookTypeTextView = (TextView) itemView.findViewById(R.id.book_type_view);
             this.mAdapter = adapter;
         }
 

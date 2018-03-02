@@ -17,12 +17,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.mussieh.recapp.App;
 import com.mussieh.recapp.R;
 import com.mussieh.recapp.RecappActivity;
 import com.mussieh.recapp.adapter.BookListAdapter;
 import com.mussieh.recapp.data.BookItem;
 import com.mussieh.recapp.data.BookListOpenHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,7 +49,9 @@ public class BookFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mDB = new BookListOpenHelper(getActivity());
+        Log.d(TAG, "Opening Fragment");
+
+        mDB = new BookListOpenHelper(App.getContext());
 
         getLoaderManager().initLoader(0, null, this);
         getLoaderManager().getLoader(0).startLoading();
@@ -77,9 +81,21 @@ public class BookFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mDB.closeDatabase();
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -89,8 +105,10 @@ public class BookFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<List<BookItem>> loader, List<BookItem> data) {
-        mLoadingIndicator.setVisibility(View.INVISIBLE);
-        mAdapter.setData(data);
+        if (!data.isEmpty()) {
+            mLoadingIndicator.setVisibility(View.INVISIBLE);
+            mAdapter.setData(data);
+        }
     }
 
     @Override
@@ -108,9 +126,9 @@ public class BookFragment extends Fragment implements LoaderManager.LoaderCallba
 
         @Override
         public List<BookItem> loadInBackground() {
-            List<BookItem> results;
-            Log.d(TAG, "Querying database");
-            results = dbHelper.queryBooks(" \"dummy\" ");
+            List<BookItem> results = new ArrayList<>();
+            dbHelper.createDatabase();
+            results = dbHelper.queryBooks(" \"Interview Preparation\" ");
             return results;
         }
     }

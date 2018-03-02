@@ -6,7 +6,7 @@ package com.mussieh.recapp.data;
  */
 
 public class BookItem {
-    private int isbn;
+    private String isbn;
     private String title;
     private String author;
     private String bookType;
@@ -19,7 +19,7 @@ public class BookItem {
 
     }
 
-    public int getIsbn() {return isbn;}
+    public String getIsbn() {return isbn;}
 
     public String getTitle() {
         return title;
@@ -49,7 +49,7 @@ public class BookItem {
         return subjectName;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 

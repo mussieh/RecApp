@@ -25,13 +25,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="PrimaryFlatButton" parent="Theme.AppCompat.Light">
-        <item name="android:buttonStyle">
-            @style/Widget.AppCompat.Button.Borderless.Colored
-        </item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
     <style name="word_title">
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
@@ -40,9 +33,9 @@
     </style>
 
     <style name="bookCardTheme">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/colorText</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
 </resources>

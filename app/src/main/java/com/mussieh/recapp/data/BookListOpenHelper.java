@@ -4,12 +4,20 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import com.mussieh.recapp.App;
 import com.mussieh.recapp.RecappActivity;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +34,6 @@ public class BookListOpenHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String BOOK_LIST_TABLE = "book_entries";
     private static final String DATABASE_NAME = "recapplist.db";
-    private static final String DATABASE_LOCATION = "/data/data/com.mussieh.recapp/databases/";
 
     // Column Names
     public static final String KEY_ISBN = "isbn";
@@ -41,19 +48,108 @@ public class BookListOpenHelper extends SQLiteOpenHelper {
     private static final String[] COLUMNS = {KEY_ISBN, KEY_TITLE, KEY_AUTHOR, KEY_BOOK_TYPE,
             KEY_RANK, KEY_DESCRIPTION, KEY_PICTURE_LOCATION, KEY_SUBJECT_NAME};
 
-    private static final String BOOK_LIST_TABLE_CREATE = "CREATE TABLE " + BOOK_LIST_TABLE + " (" +
-            KEY_ISBN + " INTEGER PRIMARY KEY, " + KEY_TITLE + " TEXT NOT NULL UNIQUE, " +
-            KEY_AUTHOR + " TEXT NOT NULL UNIQUE, " + KEY_BOOK_TYPE + " TEXT NOT NULL UNIQUE, " +
-            KEY_RANK + " INTEGER NOT NULL, " + KEY_DESCRIPTION + " TEXT NOT NULL, " +
-            KEY_PICTURE_LOCATION + " TEXT NOT NULL, " + KEY_SUBJECT_NAME + " TEXT NOT NULL );";
 
     private SQLiteDatabase mWritableDB;
     private SQLiteDatabase mReadableDB;
+    private String databasePath;
+    private Context mContext;
 
 
+    /**
+     * Constructor for the BookListOpenHelper
+     * @param context the RecappActivity context
+     */
     public BookListOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        openDatabase();
+        mContext = context;
+        databasePath = mContext.getDatabasePath(DATABASE_NAME).getPath();
+        Log.d(TAG, "DATABASE_PATH" + databasePath);
+    }
+
+    @Override
+    public synchronized void close() {
+        super.close();
+        if (mReadableDB != null) {
+            mReadableDB.close();
+        }
+    }
+
+    /**
+     * Creates the SQLite database if it does not already exist
+     */
+    public void createDatabase() {
+        boolean databaseExists = checkIfDatabaseExists();
+
+        if (databaseExists) {
+            openDatabase();
+        }
+        else {
+            try {
+                copyDatabase();
+                openDatabase();
+            } catch (Exception e) {
+                Log.d(TAG, e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Opens the SQLite database connection
+     */
+    private void openDatabase() {
+        if (mReadableDB != null && mReadableDB.isOpen()) {
+            return;
+        }
+        try {
+            mReadableDB = SQLiteDatabase.openDatabase(databasePath, null,
+                    SQLiteDatabase.OPEN_READONLY);
+        } catch (Exception e) {
+            Log.d(TAG, "Database Opening Exception" + e.getMessage());
+        }
+    }
+
+    /**
+     * Copies the prebuilt database into the databases folder
+     */
+    public void copyDatabase() {
+        try {
+            InputStream myInput = mContext.getAssets().open("databases/"+DATABASE_NAME);
+            OutputStream myOutput = new FileOutputStream(databasePath);
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ( (length = myInput.read(buffer)) > 0 ) {
+                myOutput.write(buffer, 0, length);
+            }
+            myOutput.flush();
+            myOutput.close();
+            myInput.close();
+        } catch (IOException e) {
+            Log.d(TAG, e.getMessage());
+        }
+    }
+
+    /**
+     *
+     * @return the truth value of the database existence
+     */
+    private boolean checkIfDatabaseExists() {
+        SQLiteDatabase testDB = null;
+        File dbFile = mContext.getDatabasePath(DATABASE_NAME);
+
+        if (dbFile.exists()) {
+            try {
+                testDB = SQLiteDatabase.openDatabase(databasePath, null,
+                        SQLiteDatabase.OPEN_READONLY);
+            } catch (SQLiteException e) {
+                Log.d(TAG, e.getMessage());
+            } finally {
+                testDB.close();
+            }
+            if (testDB != null) {return true;}
+        }
+
+        return false;
     }
 
     @Override
@@ -72,55 +168,6 @@ public class BookListOpenHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    /**
-     * Open the SQLite database connection
-     */
-    private void openDatabase() {
-        String dbPath = "/data/user/0/com.mussieh.recapp/databases/" + DATABASE_NAME;
-        Log.d(TAG, dbPath);
-        if (mReadableDB != null && mReadableDB.isOpen()) {
-            return;
-        }
-        try {
-            mReadableDB = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READONLY);
-        } catch (Exception e) {
-            Log.d(TAG, "Database Opening Exception" + e.getMessage());
-        }
-    }
-
-    /**
-     * Close the SQLite database connection
-     */
-    public void closeDatabase() {
-
-        try {
-            if (mReadableDB != null) {
-                mReadableDB.close();
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "Database Closing Exception" + e.getMessage());
-        } finally {
-            mReadableDB.close();
-        }
-    }
-
-//    private void fillDatabaseWithData(SQLiteDatabase db) {
-//        BookItem[] Books;
-//        ContentValues values = new ContentValues();
-//        String dummyData = "dummy";
-//        int counter = 0;
-//
-//        for (String column: COLUMNS) {
-//            if (column == "rank" || column == "isbn") {
-//                values.put(column, counter++);
-//            }
-//            else {
-//                values.put(column, dummyData);
-//            }
-//        }
-//
-//        db.insert(BOOK_LIST_TABLE, null, values);
-//    }
 
     /**
      * Query the readable SQLite database for book items
@@ -133,28 +180,31 @@ public class BookListOpenHelper extends SQLiteOpenHelper {
                 "=" + queryString + " ORDER BY " + KEY_RANK + " ASC;";
 
         Cursor cursor = null;
-        BookItem entry = new BookItem();
+        BookItem bookEntry;
         List<BookItem> books = new ArrayList<>();
 
         try {
             cursor = mReadableDB.rawQuery(query, null);
-            cursor.moveToFirst();
-            entry.setIsbn(cursor.getInt(cursor.getColumnIndex(KEY_ISBN)));
-            entry.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE)));
-            entry.setAuthor(cursor.getString(cursor.getColumnIndex(KEY_AUTHOR)));
-            entry.setBookType(cursor.getString(cursor.getColumnIndex(KEY_BOOK_TYPE)));
-            entry.setRank(cursor.getInt(cursor.getColumnIndex(KEY_RANK)));
-            entry.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)));
-            entry.setPictureLocation(cursor.getString(cursor.getColumnIndex(KEY_PICTURE_LOCATION)));
-            entry.setSubjectName(cursor.getString(cursor.getColumnIndex(KEY_SUBJECT_NAME)));
 
-            for (int i = 0; i < 5; i++) {
-                books.add(entry);
+            while (!cursor.isAfterLast()) {
+                cursor.moveToNext();
+                bookEntry = new BookItem(); // new object needed for each unique book entry
+                bookEntry.setIsbn(cursor.getString(cursor.getColumnIndex(KEY_ISBN)));
+                bookEntry.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE)));
+                bookEntry.setAuthor(cursor.getString(cursor.getColumnIndex(KEY_AUTHOR)));
+                bookEntry.setBookType(cursor.getString(cursor.getColumnIndex(KEY_BOOK_TYPE)));
+                bookEntry.setRank(cursor.getInt(cursor.getColumnIndex(KEY_RANK)));
+                bookEntry.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)));
+                bookEntry.setPictureLocation(cursor.getString(cursor.getColumnIndex(KEY_PICTURE_LOCATION)));
+                bookEntry.setSubjectName(cursor.getString(cursor.getColumnIndex(KEY_SUBJECT_NAME)));
+                books.add(bookEntry);
             }
         } catch (Exception e) {
             Log.d(TAG, "QUERY EXCEPTION!" + e.getMessage());
         } finally {
-            cursor.close();
+            if (cursor != null) {
+                cursor.close();
+            }
             return books;
         }
     }
