@@ -21,7 +21,7 @@ import com.mussieh.recapp.adapter.PagerAdapter;
 public class RecappActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final int NUMBER_OF_OFFSCREEN_FRAGMENTS = 3;
+    private static final int NUMBER_OF_OFFSCREEN_FRAGMENTS = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
