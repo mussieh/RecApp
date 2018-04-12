@@ -3,7 +3,7 @@
 Recapp is an Android application designed to recommend well-reviewed resources including books, videos, and websites on selected subjects in Computer Science. The app is a work in progress and will be demonstrated in May of 2018. 
 The goal of the application is to help students find excellent academic resources quickly and conveniently.
 
-**Currently, the following have been implemented in the app:**
+**Implemented So Far:**
 
 * Sample subject recommendation
 * Extensive ConstraintLayout use for creating a responsive UI
@@ -15,14 +15,14 @@ The goal of the application is to help students find excellent academic resource
 * Sample subject settings
 * Master/detail navigation flow for sample book data
 
-**Working on:**
+**Working On:**
 
 * Adding support for YouTubePlayerFragment to play YouTube videos inside the app
 * Adding support for Chrome Custom Tabs to display websites inside the app
 * Hooking up the Fragments with real data
 * Polishing the UI and performing Espresso tests
 
-**Stretch goals:**
+**Stretch Goals:**
 
 * Adding user accounts with authentication
 * Adding more subjects
