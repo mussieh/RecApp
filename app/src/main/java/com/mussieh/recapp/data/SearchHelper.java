@@ -20,8 +20,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+//todo: Remove static context
+
 /**
  * Helper class for searching indexed application data on Algolia
+ * This class is for testing purposes only. 
+ * Future versions should not have references to objects in a static context
+ * as that will cause a memory leak.
  */
 public class SearchHelper {
     private static final String TAG =SearchHelper.class.getSimpleName();
@@ -29,7 +34,7 @@ public class SearchHelper {
     /**
      * Algolia Specs
      * Note: In a production app, this should be fetched from an online resource.
-     * Note: Developer keys should not be in class files.
+     * Developer keys should not be in class files.
      */
     private static final Client searchClient = new Client("YourApplicationID", "YourAPIKey");
     private static final Index searchIndex = searchClient.getIndex("your_index_name");
