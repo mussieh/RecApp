@@ -41,7 +41,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What you need to install the program:
+What you need for installing the app:
 
 ```
 Android Studio (Latest version preferred)
