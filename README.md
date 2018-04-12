@@ -18,7 +18,7 @@ The goal of the application is to help students find excellent academic resource
 **Working on:**
 
 * Adding support for YouTubePlayerFragment to play YouTube videos inside the app
-* Adding support for Chrome Custom tabs to display websites inside the app
+* Adding support for Chrome Custom Tabs to display websites inside the app
 * Hooking up the Fragments with real data
 * Polishing the UI and performing Espresso tests
 
