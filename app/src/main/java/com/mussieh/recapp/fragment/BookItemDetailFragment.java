@@ -1,6 +1,7 @@
 package com.mussieh.recapp.fragment;
 
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.mussieh.recapp.R;
 import com.mussieh.recapp.RecappActivity;
@@ -70,6 +73,15 @@ public class BookItemDetailFragment extends Fragment {
             appBarLayout.setTitle(bookItem.getTitle());
         }
 
+        android.support.v7.widget.Toolbar toolbar = rootView.findViewById(R.id.book_detail_toolbar);
+        AppCompatActivity parentActivity = ( (AppCompatActivity) getActivity() );
+        parentActivity.setSupportActionBar(toolbar);
+        android.support.v7.app.ActionBar supportActionBar = parentActivity.getSupportActionBar();
+
+        if (supportActionBar != null) {
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         setHasOptionsMenu(true);
 
         if (bookItem != null) {
@@ -94,14 +106,6 @@ public class BookItemDetailFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.options_menu, menu);
-        MenuItem searchMenuItem = menu.findItem(R.id.menu_search);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.menu_search).getActionView();
-        searchMenuItem.expandActionView();
-    }
 
     /**
      * Returns a new instance of BookItemDetailFragment
