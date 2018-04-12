@@ -59,6 +59,6 @@ the toolbar.
 * [Android Developer Fundamentals Course - Concepts](https://legacy.gitbook.com/book/google-developer-training/android-developer-fundamentals-course-concepts/details)
 * [Android Developer Fundamentals Course - Practicals](https://legacy.gitbook.com/book/google-developer-training/android-developer-fundamentals-course-practicals/details)
 * [Firebase Support Library](https://firebase.google.com/docs/android/setup)
-* [Algolia Android API Client](https://www.algolia.com/doc/api-client/android/getting-started) (optional if full-text search is not needed)
+* [Algolia Android API Client](https://www.algolia.com/doc/api-client/android/getting-started) (for full-text search; has free version)
 
 
