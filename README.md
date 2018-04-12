@@ -32,7 +32,7 @@ Sample Book Data Handset View   |  Sample Book Data Tablet View
 :------------------------------:|:-------------------------:
 ![](https://github.com/mussieh/Recapp/blob/master/droid_handset.png)       |  ![](https://github.com/mussieh/Recapp/blob/master/droid_tablet.png)
 
-**Note: In order for the app to run properly, make sure you include your own API keys in the required classes. In addition, note that
+**Note: In order for the app to run properly, make sure you include your own API keys in the required classes. In addition, know that
 the development of this application has not yet been completed.**
 
 
