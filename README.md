@@ -11,7 +11,7 @@ The goal of the application is to help students find excellent academic resource
 * Full-text search through Algolia
 * Firebase Realtime Database support
 * Use of the Glide image loading library for fast and efficient image loading
-* Personal list with draggable (dismissable) CardView items
+* Personal list with draggable (dismissible) CardView items
 * Sample subject settings
 * Master/detail navigation flow for sample book data
 
