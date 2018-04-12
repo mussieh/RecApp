@@ -56,6 +56,7 @@ the toolbar.
 
 ### Helpful Resources
 
+* [Android Developer Guides](https://developer.android.com/guide/index.html)
 * [Android Developer Fundamentals Course - Concepts](https://legacy.gitbook.com/book/google-developer-training/android-developer-fundamentals-course-concepts/details)
 * [Android Developer Fundamentals Course - Practicals](https://legacy.gitbook.com/book/google-developer-training/android-developer-fundamentals-course-practicals/details)
 * [Advanced Android Development Course – Concepts](https://legacy.gitbook.com/book/google-developer-training/android-developer-advanced-course-concepts/details)
