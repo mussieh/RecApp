@@ -28,6 +28,8 @@ Stretch goals:
 * Adding more subjects
 * Further polishing the app with custom themes, icons and fluid animations
 
-
+Sample Book Data Handset View   |  Sample Book Data Tablet View
+:------------------------------:|:-------------------------:
+![](https://github.com/mussieh/Recapp/blob/master/droid_handset.png)       |  ![](https://github.com/mussieh/Recapp/blob/master/droid_tablet.png)
 
 
