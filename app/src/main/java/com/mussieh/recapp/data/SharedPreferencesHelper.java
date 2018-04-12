@@ -10,10 +10,12 @@ import java.util.HashMap;
 /**
  * Created by Mussie on 3/25/2018.
  * Helper class to handle Settings data through SharedPreferences
+ * Note: This class is functional but not complete. Its static context
+ * might be removed
  */
 public class SharedPreferencesHelper {
     private static final String TAG = SharedPreferencesHelper.class.getSimpleName();
-    public static final String SHARED_PREF_FILE = "com.mussieh.options_menu.settingspref";
+    public static final String SHARED_PREF_FILE = "YourSharedPrefencesFileName";
     private static SharedPreferences mPreferences = null;
     private static SharedPreferences.Editor preferenceEditor = null;
     private static String previousChoice;
