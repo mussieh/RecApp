@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "677843880272",
-    "firebase_url": "https://recapp-6c8f2.firebaseio.com",
-    "project_id": "recapp-6c8f2",
-    "storage_bucket": "recapp-6c8f2.appspot.com"
+    "project_number": "YOUR_PROJECT_NUMBER",
+    "firebase_url": "YOUR_FIREBASE_URL",
+    "project_id": "YOUR_PROJECT_ID",
+    "storage_bucket": "YOUR_STORAGE_BUCKET_URL"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:677843880272:android:997f1bdfaf522f22",
+        "mobilesdk_app_id": "YOUR_MOBILE_SDK_APP_ID",
         "android_client_info": {
-          "package_name": "com.mussieh.recapp"
+          "package_name": "YOUR_PACKAGE_NAME"
         }
       },
       "oauth_client": [
         {
-          "client_id": "677843880272-kt76sretqhvd965jvuhb0hr5nl51orau.apps.googleusercontent.com",
+          "client_id": "CLIENT_ID",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.mussieh.recapp",
-            "certificate_hash": "afb1df76a075d56c60a77fe8286087d3b397d6d0"
+            "package_name": "PACKAGE_NAME",
+            "certificate_hash": "CERTIFICATE_HASH"
           }
         },
         {
-          "client_id": "677843880272-ta6ni0esodq3u472u1icpcr3nh47ridq.apps.googleusercontent.com",
+          "client_id": "CLIENT_ID",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDq128GiaYOFzWPwNbAS4kApefUPX7Cf7g"
+          "current_key": "API_KEY"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "677843880272-ta6ni0esodq3u472u1icpcr3nh47ridq.apps.googleusercontent.com",
+              "client_id": "CLIENT_ID",
               "client_type": 3
             }
           ]
