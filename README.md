@@ -5,15 +5,15 @@ The goal of the application is to help students find excellent academic resource
 
 Currently, the following have been implemented in the app:
 
-*Sample subject recommendation
-*Extensive ConstraintLayout use for creating a responsive UI
-*Maximal Fragment usage for better application modularity
-*Full-text search through Algolia
-*Firebase Realtime Database support
-*Use of the Glide image loading library for fast and efficient image loading
-*Personal list with draggable (dismissable) cardview items
-*Sample subject settings
-*Master/detail navigation flow for sample book data
-*Working on:
+* Sample subject recommendation
+* Extensive ConstraintLayout use for creating a responsive UI
+* Maximal Fragment usage for better application modularity
+* Full-text search through Algolia
+* Firebase Realtime Database support
+* Use of the Glide image loading library for fast and efficient image loading
+* Personal list with draggable (dismissable) cardview items
+* Sample subject settings
+* Master/detail navigation flow for sample book data
+* Working on:
 
 
