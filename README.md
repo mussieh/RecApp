@@ -56,7 +56,7 @@ the toolbar.
 
 ### Further References
 
-[Firebase Support Library](https://firebase.google.com/docs/android/setup)
-[Algolia Android API Client](https://www.algolia.com/doc/api-client/android/getting-started) (optional if full-text search is not needed)
+* [Firebase Support Library](https://firebase.google.com/docs/android/setup)
+* [Algolia Android API Client](https://www.algolia.com/doc/api-client/android/getting-started) (optional if full-text search is not needed)
 
 
