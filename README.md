@@ -14,6 +14,20 @@ Currently, the following have been implemented in the app:
 * Personal list with draggable (dismissable) cardview items
 * Sample subject settings
 * Master/detail navigation flow for sample book data
-* Working on:
+
+Working on:
+
+* Adding support for YoutubePlayerFragment to play Youtube videos inside the app
+* Adding support for Chrome Custom tabs to display websites inside the app
+* Hooking up the Fragments with real data
+* Polishing the UI and performing Espresso tests
+
+Stretch goals:
+
+* Adding user accounts with authentication
+* Adding more subjects
+* Further polishing the app with custom themes, icons and fluid animations
+
+
 
 
