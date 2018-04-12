@@ -26,7 +26,7 @@ The goal of the application is to help students find excellent academic resource
 
 * Adding user accounts with authentication
 * Adding more subjects
-* Further polishing the app with custom themes, icons and fluid animations
+* More custom themes, icons and fluid animations
 
 Sample Book Data Handset View   |  Sample Book Data Tablet View
 :------------------------------:|:-------------------------:
