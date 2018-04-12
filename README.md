@@ -15,14 +15,14 @@ The goal of the application is to help students find excellent academic resource
 * Sample subject settings
 * Master/detail navigation flow for sample book data
 
-**Working on:
+**Working on:**
 
 * Adding support for YoutubePlayerFragment to play Youtube videos inside the app
 * Adding support for Chrome Custom tabs to display websites inside the app
 * Hooking up the Fragments with real data
 * Polishing the UI and performing Espresso tests
 
-**Stretch goals:
+**Stretch goals:**
 
 * Adding user accounts with authentication
 * Adding more subjects
