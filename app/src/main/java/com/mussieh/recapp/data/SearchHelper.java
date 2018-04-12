@@ -31,9 +31,8 @@ public class SearchHelper {
      * Note: In a production app, this should be fetched from an online resource.
      * Note: Developer keys should not be in class files.
      */
-    private static final Client searchClient = new Client("G9W970XPQQ",
-            "ca34242e292a30cdd102da1c5e3d831d");
-    private static final Index searchIndex = searchClient.getIndex("recapp_index");
+    private static final Client searchClient = new Client("YourApplicationID", "YourAPIKey");
+    private static final Index searchIndex = searchClient.getIndex("your_index_name");
     private static com.algolia.search.saas.Query queryObj = new com.algolia.search.saas.Query("");
 
     /**
