@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
     tools:context="com.mussieh.recapp.RecappActivity"
     tools:showIn="@layout/app_bar_recapp">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+    <com.mussieh.recapp.LockableViewPager
+        android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="0dp">
+    </com.mussieh.recapp.LockableViewPager>
+
 
 </android.support.constraint.ConstraintLayout>

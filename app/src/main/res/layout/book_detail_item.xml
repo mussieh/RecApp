@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mussieh.recapp.fragment.BookItemDetailFragment">
+
+    <RatingBar
+        android:id="@+id/book_detail_ratings_bar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:progressTint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toEndOf="@+id/book_detail_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/book_detail_author_tv" />
+
+    <ImageView
+        android:id="@+id/book_detail_image_view"
+        android:contentDescription="@string/book_image"
+        android:layout_width="139dp"
+        android:layout_height="178dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/book_detail_title_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/book_detail_image_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cracking the Coding Interview" />
+
+    <TextView
+        android:id="@+id/book_detail_author_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/book_detail_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/book_detail_title_tv"
+        tools:text="Gayle Lakmann Mcdowell" />
+
+    <TextView
+        android:id="@+id/book_detail_description_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="5"
+        android:ellipsize="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/book_detail_image_view"
+        tools:text="asdas" />
+
+</android.support.constraint.ConstraintLayout>
