@@ -35,4 +35,28 @@ Sample Book Data Handset View   |  Sample Book Data Tablet View
 **Note: In order for the app to run properly, make sure you include your own API keys in the required classes. In addition, know that
 the development of this application has not yet been completed.**
 
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+What you need to install the program:
+
+```
+Android Studio (Latest version preferred)
+
+```
+
+### Running
+
+In order to run the program, download the source code into a source folder and install Android studio,
+if it is not already installed. Then, import this project from within Android Studio and press on the 'Run' button from
+the toolbar.
+
+### Further References
+
+[Firebase Support Library](https://firebase.google.com/docs/android/setup)
+[Algolia Android API Client](https://www.algolia.com/doc/api-client/android/getting-started) (optional if full-text search is not needed)
+
 
