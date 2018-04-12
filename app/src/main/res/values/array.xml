@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pref_subjects_list_titles">
+        <item>Algorithms &amp; Data Structures</item>
+        <item>Android Development</item>
+        <item>Interview Preparation</item>
+        <item>Web Development</item>
+    </string-array>
+
+    <string-array name="pref_subjects_list_values">
+        <item>algorithms_and_data_structures</item>
+        <item>android_development</item>
+        <item>interview_preparation</item>
+        <item>web_development</item>
+    </string-array>
+
+</resources>
