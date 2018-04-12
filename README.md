@@ -32,7 +32,7 @@ Sample Book Data Handset View   |  Sample Book Data Tablet View
 :------------------------------:|:-------------------------:
 ![](https://github.com/mussieh/Recapp/blob/master/droid_handset.png)       |  ![](https://github.com/mussieh/Recapp/blob/master/droid_tablet.png)
 
-**Note: In order for the app to run properly, make sure you include your own API keys in the required classes. This means that you need to override the Goolge Services account client file (google-services.json) in the project to use Firebase and its APIs. In addition, know that
+**Note: In order for the app to run properly, make sure you include your own API keys in the required classes. You also need to overwrite the Goolge Services account client file (google-services.json) in this project in order to use Firebase and its APIs. In addition, know that
 the development of this application has not yet been completed.**
 
 ## Getting Started
