@@ -2,7 +2,7 @@ package com.mussieh.recapp.data;
 
 /**
  * Created by Mussie on 3/12/2018.
- * Class to hold the user's developer key
+ * Class to hold the user's YouTube Data API developer key
  * Note: In the final application, never store a developer key in class files, but fetch the key
  * from an online source during runtime.
  */
