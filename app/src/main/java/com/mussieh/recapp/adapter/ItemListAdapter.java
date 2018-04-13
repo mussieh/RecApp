@@ -97,7 +97,7 @@ public abstract class ItemListAdapter extends RecyclerView.Adapter<RecyclerView.
     }
 
     /**
-     * Returns the mResources currently loaded in the adapter
+     * Returns the resources currently loaded in the adapter
      * @return the loaded resource list items
      */
     public ArrayList<ResourceListItem> getResources() {
