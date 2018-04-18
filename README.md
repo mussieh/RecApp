@@ -32,7 +32,7 @@ Sample Book Data Handset View   |  Sample Book Data Tablet View
 :------------------------------:|:-------------------------:
 ![](https://github.com/mussieh/Recapp/blob/master/droid_Handset.png)       |  ![](https://github.com/mussieh/Recapp/blob/master/droid_Tablet.png)
 
-**Note: In order for the app to run properly, make sure you include your own API keys in the required classes. You also need to overwrite the Goolge Services account client file (google-services.json) in the 'app' folder in order to use Firebase and its APIs. In addition, please undestand that the development of this application has not yet been completed.**
+**Note: In order for the app to run properly, make sure you include your own API keys in the required classes. You also need to overwrite the Goolge Services account client file (google-services.json) in the 'app' folder in order to use Firebase and its APIs. In addition, please understand that the development of this application has not yet been completed.**
 
 ## Getting Started
 
